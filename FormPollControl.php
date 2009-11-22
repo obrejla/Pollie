@@ -6,7 +6,7 @@
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
- * @link       http://nettephp.com/cs/extras/poll-control
+ * @link       http://github.com/OndrejBrejla/Nette-PollControl
  * @package    Nette\Extras
  * @version    0.1
  */
