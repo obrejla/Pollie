@@ -35,6 +35,9 @@ class PollControlModel extends Object implements IPollControlModel {
     public function __construct($id) {
         $this->id = $id;
         $this->connection = new DibiConnection(Environment::getConfig('database'));
+
+		$sess = Environment::getSession(self::SESSION_NAMESPACE);
+		$sess->poll[$id] = FALSE;
     }
 
     /**
@@ -86,7 +89,7 @@ class PollControlModel extends Object implements IPollControlModel {
     public function isVotable() {
         $sess = Environment::getSession(self::SESSION_NAMESPACE);
 
-        if ($sess->poll[$this->id] === 'TRUE') {
+        if ($sess->poll[$this->id] === TRUE) {
             return FALSE;
         } else {
             if ($this->connection->fetchSingle("SELECT COUNT(*) FROM poll_control_votes WHERE ip = '$_SERVER[REMOTE_ADDR]' AND questionId = $this->id AND date + INTERVAL 30 SECOND > NOW()")) {
@@ -103,7 +106,7 @@ class PollControlModel extends Object implements IPollControlModel {
     private function denyVotingForUser() {
         $sess = Environment::getSession(self::SESSION_NAMESPACE);
 
-        $sess->poll[$this->id] = 'TRUE';
+        $sess->poll[$this->id] = TRUE;
 
         $this->connection->query("INSERT INTO poll_control_votes (questionId, ip, date) VALUES ($this->id, '$_SERVER[REMOTE_ADDR]', NOW())");
     }
