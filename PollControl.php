@@ -1,5 +1,8 @@
 <?php
 
+use Nette\Environment;
+use Nette\Application\UI\Control;
+
 /**
  * PollControl - plugin for Nette Framework for voting.
  *
@@ -21,7 +24,7 @@ abstract class PollControl extends Control {
     /**
      * Model layer object.
      *
-     * @var IPollControlModel Model layer object.
+     * @var PollControlModel Model layer object.
      */
     private $model = NULL;
 
@@ -45,10 +48,10 @@ abstract class PollControl extends Control {
     /**
      * Sets new model layer of the poll.
      *
-     * @param IPollControlModel $model Model layer for the poll.
+     * @param PollControlModel $model Model layer for the poll.
      * @return void
      */
-    public function setModel(IPollControlModel $model) {
+    public function setModel(PollControlModel $model) {
         $this->model = $model;
     }
 
@@ -108,9 +111,10 @@ abstract class PollControl extends Control {
     /**
      * Creates new template and sets variables.
      *
+	 * @param mixed $class
      * @return ITemplate Template.
      */
-    protected function createTemplate() {
+    protected function createTemplate($class = NULL) {
         $template = parent::createTemplate();
 
         $template->question = $this->model->getQuestion();

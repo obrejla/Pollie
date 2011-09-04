@@ -1,5 +1,7 @@
 <?php
 
+use Nette\Object;
+
 /**
  * PollControlAnswer - part of PollControl plugin for Nette Framework for voting.
  *

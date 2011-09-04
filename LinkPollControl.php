@@ -28,7 +28,7 @@ class LinkPollControl extends PollControl {
     }
 
     public function render() {
-        $this->template->setFile(dirname(__FILE__) . '/LinkPollControl.phtml');
+        $this->template->setFile(dirname(__FILE__) . '/LinkPollControl.latte');
 
         $this->template->render();
     }

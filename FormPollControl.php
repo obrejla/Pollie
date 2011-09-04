@@ -1,5 +1,7 @@
 <?php
 
+use Nette\Application\UI\Form;
+
 /**
  * FormPollControl - part of PollControl plugin for Nette Framework for voting.
  * Uses form with RadioList for realization of the vote.
@@ -13,7 +15,7 @@
 class FormPollControl extends PollControl {
 
     public function createComponentPollControlForm() {
-        $form = new AppForm();
+        $form = new Form();
         $form->addProtection('Kontrolní klíč nesouhlasí. Opakujte hlasování.');
 
         $answers = array();
@@ -25,12 +27,12 @@ class FormPollControl extends PollControl {
 
         $form->addSubmit('pollVoteSubmit', 'Hlasovat');
 
-        $form->onSubmit[] = array($this, 'onSubmitVote');
+        $form->onSuccess[] = array($this, 'onSuccessVote');
 
         return $form;
     }
 
-    public function onSubmitVote(AppForm $form) {
+    public function onSuccessVote(Form $form) {
         try {
             $this->model->vote($form->values['pollVoteRadiolist']);
             $this->flashMessage('Váš hlas byl uložen.');
@@ -46,7 +48,7 @@ class FormPollControl extends PollControl {
     }
 
     public function render() {
-        $this->template->setFile(dirname(__FILE__) . '/FormPollControl.phtml');
+        $this->template->setFile(dirname(__FILE__) . '/FormPollControl.latte');
 
         $this->template->render();
     }

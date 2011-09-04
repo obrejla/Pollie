@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PollControlModel - part of PollControl plugin for Nette Framework for voting.
+ * IPollControlModel - part of PollControl plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
@@ -9,106 +9,35 @@
  * @package    Nette\Extras
  * @version    0.1
  */
-class PollControlModel extends Object implements IPollControlModel {
-
-    const SESSION_NAMESPACE = '__poll_control';
+interface PollControlModel {
 
     /**
-     * Connection to the database.
+     * Returns count of all votes of the poll.
      *
-     * @var DibiConnection Connection to the database.
+     * @return int Count of all votes of the poll.
      */
-    private $connection;
+    public function getAllVotesCount();
 
     /**
-     * Id of the current poll.
+     * Returns question of the poll.
      *
-     * @var mixed Id of the current poll.
+     * @return string Question of the poll.
      */
-    private $id;
+    public function getQuestion();
 
     /**
-     * Constructor of the poll control model layer.
+     * Returns array of answers - array of PollControlAnswer.
      *
-     * @param mixed $id Id of the current poll.
+     * @return Array ofPollControlAnswer Array of answers.
      */
-    public function __construct($id) {
-        $this->id = $id;
-        $this->connection = new DibiConnection(Environment::getConfig('database'));
-
-		$sess = Environment::getSession(self::SESSION_NAMESPACE);
-		$sess->poll[$id] = FALSE;
-    }
+    public function getAnswers();
 
     /**
-     * @see IPollControlModel::getAllVotesCount()
-     */
-    public function getAllVotesCount() {
-        return $this->connection->fetchSingle('SELECT SUM(votes) FROM poll_control_answers WHERE questionId = %i', $this->id);
-    }
-
-    /**
-     * @see IPollControlModel::getQuestion()
-     */
-    public function getQuestion() {
-        return $this->connection->fetchSingle('SELECT question FROM poll_control_questions WHERE id = %i', $this->id);
-    }
-
-    /**
-     * @see IPollControlModel::getAnswers()
-     */
-    public function getAnswers() {
-        $this->connection->fetchAll('SELECT id, answer, votes FROM poll_control_answers WHERE questionId = %i', $this->id);
-
-        $answers = array();
-        foreach ($this->connection->fetchAll('SELECT id, answer, votes FROM poll_control_answers WHERE questionId = %i', $this->id) as $row) {
-            $answers[] = new PollControlAnswer($row->answer, $row->id, $row->votes);
-        }
-
-        return $answers;
-    }
-
-    /**
-     * Makes vote for specified answer id.
+     * Checks if current poll is votable for user, or not. If he had already vote, or not.
      *
-     * @param int $id Id of specified answer.
+     * @return boolean TRUE, if user can vote.
      */
-    public function vote($id) {
-        if ($this->isVotable()) {
-            $this->connection->query('UPDATE poll_control_answers SET votes = votes + 1 WHERE id = %i', $id, ' AND questionId = %i', $this->id);
-            
-            $this->denyVotingForUser();
-        } else {
-            throw new BadRequestException('You can vote only once per hour.');
-        }
-    }
-
-    /**
-     * @see IPollControlModel::isVotable()
-     */
-    public function isVotable() {
-        $sess = Environment::getSession(self::SESSION_NAMESPACE);
-
-        if ($sess->poll[$this->id] === TRUE) {
-            return FALSE;
-        } else {
-            if ($this->connection->fetchSingle("SELECT COUNT(*) FROM poll_control_votes WHERE ip = '$_SERVER[REMOTE_ADDR]' AND questionId = $this->id AND date + INTERVAL 30 SECOND > NOW()")) {
-                return FALSE;
-            }
-        }
-
-        return TRUE;
-    }
-
-    /**
-     * Disables voting for the user who had currently voted.
-     */
-    private function denyVotingForUser() {
-        $sess = Environment::getSession(self::SESSION_NAMESPACE);
-
-        $sess->poll[$this->id] = TRUE;
-
-        $this->connection->query("INSERT INTO poll_control_votes (questionId, ip, date) VALUES ($this->id, '$_SERVER[REMOTE_ADDR]', NOW())");
-    }
+    public function isVotable();
 
 }
+
