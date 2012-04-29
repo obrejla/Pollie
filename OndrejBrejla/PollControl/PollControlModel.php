@@ -3,13 +3,13 @@
 namespace OndrejBrejla\PollControl;
 
 /**
- * PollControlModel - part of PollControl plugin for Nette Framework for voting.
+ * Model - part of PollControl plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
  */
-interface PollControlModel {
+interface Model {
 
     /**
      * Returns count of all votes of the poll.

@@ -24,7 +24,7 @@ abstract class PollControl extends Control {
     /**
      * Model layer object.
      *
-     * @var PollControlModel Model layer object.
+     * @var Model Model layer object.
      */
     private $model = NULL;
 
@@ -48,21 +48,21 @@ abstract class PollControl extends Control {
     /**
      * Sets new model layer of the poll.
      *
-     * @param PollControlModel $model Model layer for the poll.
+     * @param Model $model Model layer for the poll.
      * @return void
      */
-    public function setModel(PollControlModel $model) {
+    public function setModel(Model $model) {
         $this->model = $model;
     }
 
     /**
      * Returns model layer of the poll.
      *
-     * @return PollControlModel Model layer for the poll.
+     * @return Model Model layer for the poll.
      */
     public function getModel() {
         if ($this->model === NULL) {
-            throw new InvalidStateException('Can not use PollControl without model layer implementing IPollControlModel interface.');
+            throw new InvalidStateException('Can not use PollControl without model layer implementing Model interface.');
         }
 
         return $this->model;

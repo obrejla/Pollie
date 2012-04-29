@@ -6,13 +6,13 @@ use Nette\Object;
 use Nette\Environment;
 
 /**
- * PollControlModelImpl - part of PollControl plugin for Nette Framework for voting.
+ * ModelImpl - part of PollControl plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
  */
-class PollControlModelImpl extends Object implements PollControlModel {
+class ModelImpl extends Object implements Model {
 
     const SESSION_NAMESPACE = '__poll_control';
 
@@ -44,21 +44,21 @@ class PollControlModelImpl extends Object implements PollControlModel {
     }
 
     /**
-     * @see PollControlModel::getAllVotesCount()
+     * @see Model::getAllVotesCount()
      */
     public function getAllVotesCount() {
         return $this->connection->fetchSingle('SELECT SUM(votes) FROM poll_control_answers WHERE questionId = %i', $this->id);
     }
 
     /**
-     * @see PollControlModel::getQuestion()
+     * @see Model::getQuestion()
      */
     public function getQuestion() {
         return $this->connection->fetchSingle('SELECT question FROM poll_control_questions WHERE id = %i', $this->id);
     }
 
     /**
-     * @see PollControlModel::getAnswers()
+     * @see Model::getAnswers()
      */
     public function getAnswers() {
         $this->connection->fetchAll('SELECT id, answer, votes FROM poll_control_answers WHERE questionId = %i', $this->id);
@@ -87,7 +87,7 @@ class PollControlModelImpl extends Object implements PollControlModel {
     }
 
     /**
-     * @see PollControlModel::isVotable()
+     * @see Model::isVotable()
      */
     public function isVotable() {
         $sess = Environment::getSession(self::SESSION_NAMESPACE);
