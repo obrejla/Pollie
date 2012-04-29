@@ -14,9 +14,9 @@ CREATE TABLE `poll_control_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 INSERT INTO `poll_control_answers` (`id`, `questionId`, `answer`, `votes`) VALUES
-(1,	1,	'Určitě ano!',	43),
-(2,	1,	'Těžko říct.',	11),
-(3,	1,	'Určitě ne!',	19);
+(1,	1,	'Surely yes!',	43),
+(2,	1,	'Hard to say.',	11),
+(3,	1,	'Sorely not!',	19);
 
 DROP TABLE IF EXISTS `poll_control_questions`;
 CREATE TABLE `poll_control_questions` (
@@ -26,7 +26,7 @@ CREATE TABLE `poll_control_questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 INSERT INTO `poll_control_questions` (`id`, `question`) VALUES
-(1,	'Tak co, podaří se?');
+(1,	'So, will it work?');
 
 DROP TABLE IF EXISTS `poll_control_votes`;
 CREATE TABLE `poll_control_votes` (
