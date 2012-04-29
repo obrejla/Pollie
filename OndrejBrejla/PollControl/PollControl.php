@@ -36,10 +36,10 @@ abstract class PollControl extends Control {
      */
     public static function factory($poll) {
         switch ($poll) {
-            case 'link': return new LinkPollControl();
-                    break;
-            case 'form': return new FormPollControl();
-                    break;
+            case 'link':
+                return new LinkPollControl();
+            case 'form':
+                return new FormPollControl();
 
             default: throw new InvalidArgumentException('Bad factory argument - ' . $poll);
         }
