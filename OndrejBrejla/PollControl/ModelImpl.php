@@ -4,6 +4,7 @@ namespace OndrejBrejla\PollControl;
 
 use Nette\Object;
 use Nette\Environment;
+use DibiConnection;
 
 /**
  * ModelImpl - part of PollControl plugin for Nette Framework for voting.
