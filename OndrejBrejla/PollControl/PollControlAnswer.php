@@ -1,5 +1,7 @@
 <?php
 
+namespace OndrejBrejla\PollControl;
+
 use Nette\Object;
 
 /**

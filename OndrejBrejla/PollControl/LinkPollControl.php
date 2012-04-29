@@ -1,5 +1,7 @@
 <?php
 
+namespace OndrejBrejla\PollControl;
+
 /**
  * FormPollControl - part of PollControl plugin for Nette Framework for voting.
  * Uses links for realization of the vote.

@@ -1,5 +1,7 @@
 <?php
 
+namespace OndrejBrejla\PollControl;
+
 /**
  * PollControlModel - part of PollControl plugin for Nette Framework for voting.
  *

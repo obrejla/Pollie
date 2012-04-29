@@ -1,5 +1,7 @@
 <?php
 
+namespace OndrejBrejla\PollControl;
+
 use Nette\Environment;
 use Nette\Application\UI\Control;
 
