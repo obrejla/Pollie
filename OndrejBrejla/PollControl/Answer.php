@@ -5,13 +5,13 @@ namespace OndrejBrejla\PollControl;
 use Nette\Object;
 
 /**
- * PollControlAnswer - part of PollControl plugin for Nette Framework for voting.
+ * Answer - part of PollControl plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
  */
-class PollControlAnswer extends Object {
+class Answer extends Object {
 
     /**
      * Id of the answer.

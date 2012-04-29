@@ -71,14 +71,14 @@ abstract class PollControl extends Control {
     /**
      * Returns array of answers of the poll (user for check answer type).
      *
-     * @return PollControlAnswer[] Array of answers for the poll.
+     * @return Answer[] Array of answers for the poll.
      */
     public function getAnswers() {
         $answers = $this->model->getAnswers();
 
         foreach ($answers as $answer) {
-            if (!($answer instanceof PollControlAnswer)) {
-                throw new InvalidStateException('Answers have to be PollControlAnswer objects.');
+            if (!($answer instanceof Answer)) {
+                throw new InvalidStateException('Answers have to be Answer objects.');
             }
         }
 

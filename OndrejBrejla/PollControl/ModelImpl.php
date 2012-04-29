@@ -65,7 +65,7 @@ class ModelImpl extends Object implements Model {
 
         $answers = array();
         foreach ($this->connection->fetchAll('SELECT id, answer, votes FROM poll_control_answers WHERE questionId = %i', $this->id) as $row) {
-            $answers[] = new PollControlAnswer($row->answer, $row->id, $row->votes);
+            $answers[] = new Answer($row->answer, $row->id, $row->votes);
         }
 
         return $answers;

@@ -26,9 +26,9 @@ interface Model {
     public function getQuestion();
 
     /**
-     * Returns array of answers - array of PollControlAnswer.
+     * Returns array of answers.
      *
-     * @return PollControlAnswer[] Array of answers.
+     * @return Answer[] Array of answers.
      */
     public function getAnswers();
 
