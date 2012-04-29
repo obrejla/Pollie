@@ -1,16 +1,16 @@
 <?php
 
-namespace OndrejBrejla\PollControl;
+namespace OndrejBrejla\Pollie;
 
 /**
- * FormPollControl - part of PollControl plugin for Nette Framework for voting.
+ * PollieLink - part of Pollie plugin for Nette Framework for voting.
  * Uses links for realization of the vote.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
- * @link       http://github.com/OndrejBrejla/Nette-PollControl
+ * @link       http://github.com/OndrejBrejla/Pollie
  */
-class LinkPollControl extends PollControl {
+class PollieLink extends Pollie {
 
     public function handleVote($id) {
         try {
@@ -28,7 +28,7 @@ class LinkPollControl extends PollControl {
     }
 
     public function render() {
-        $this->template->setFile(dirname(__FILE__) . '/LinkPollControl.latte');
+        $this->template->setFile(dirname(__FILE__) . '/PollieLink.latte');
 
         $this->template->render();
     }

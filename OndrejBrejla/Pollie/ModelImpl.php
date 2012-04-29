@@ -1,21 +1,21 @@
 <?php
 
-namespace OndrejBrejla\PollControl;
+namespace OndrejBrejla\Pollie;
 
 use Nette\Object;
 use Nette\Environment;
 use DibiConnection;
 
 /**
- * ModelImpl - part of PollControl plugin for Nette Framework for voting.
+ * ModelImpl - part of Pollie plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
- * @link       http://github.com/OndrejBrejla/Nette-PollControl
+ * @link       http://github.com/OndrejBrejla/Pollie
  */
 class ModelImpl extends Object implements Model {
 
-    const SESSION_NAMESPACE = '__poll_control';
+    const SESSION_NAMESPACE = '__pollie';
 
     /**
      * Connection to the database.

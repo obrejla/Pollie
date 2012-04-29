@@ -1,20 +1,20 @@
 <?php
 
-namespace OndrejBrejla\PollControl;
+namespace OndrejBrejla\Pollie;
 
 use Nette\Application\UI\Form;
 
 /**
- * FormPollControl - part of PollControl plugin for Nette Framework for voting.
+ * PollieForm - part of Pollie plugin for Nette Framework for voting.
  * Uses form with RadioList for realization of the vote.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
- * @link       http://github.com/OndrejBrejla/Nette-PollControl
+ * @link       http://github.com/OndrejBrejla/Pollie
  */
-class FormPollControl extends PollControl {
+class PollieForm extends Pollie {
 
-    public function createComponentPollControlForm() {
+    public function createComponentPollieForm() {
         $form = new Form();
         $form->addProtection('Control key is not correct. Do another vote.');
 
@@ -48,7 +48,7 @@ class FormPollControl extends PollControl {
     }
 
     public function render() {
-        $this->template->setFile(dirname(__FILE__) . '/FormPollControl.latte');
+        $this->template->setFile(dirname(__FILE__) . '/PollieForm.latte');
 
         $this->template->render();
     }

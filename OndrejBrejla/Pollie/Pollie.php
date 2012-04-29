@@ -1,18 +1,18 @@
 <?php
 
-namespace OndrejBrejla\PollControl;
+namespace OndrejBrejla\Pollie;
 
 use Nette\Environment;
 use Nette\Application\UI\Control;
 
 /**
- * PollControl - plugin for Nette Framework for voting.
+ * Pollie - plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
- * @link       http://github.com/OndrejBrejla/Nette-PollControl
+ * @link       http://github.com/OndrejBrejla/Pollie
  */
-abstract class PollControl extends Control {
+abstract class Pollie extends Control {
 
     /**
      * Identification string of csrf token for GET and POST methods and session namespace.
@@ -32,14 +32,14 @@ abstract class PollControl extends Control {
      * Factory method for creating requested poll type (Link, Form, ...).
      *
      * @param string $poll Name of requested poll type.
-     * @return PollControl Object of requested poll type.
+     * @return Pollie Object of requested poll type.
      */
     public static function factory($poll) {
         switch ($poll) {
             case 'link':
-                return new LinkPollControl();
+                return new PollieLink();
             case 'form':
-                return new FormPollControl();
+                return new PollieForm();
 
             default: throw new InvalidArgumentException('Bad factory argument - ' . $poll);
         }
@@ -62,7 +62,7 @@ abstract class PollControl extends Control {
      */
     public function getModel() {
         if ($this->model === NULL) {
-            throw new InvalidStateException('Can not use PollControl without model layer implementing Model interface.');
+            throw new InvalidStateException('Can not use Pollie without model layer implementing Model interface.');
         }
 
         return $this->model;

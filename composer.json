@@ -1,5 +1,5 @@
 {
-    "name": "OndrejBrejla/Nette-PollControl",
+    "name": "OndrejBrejla/Pollie",
     "description": "Component for creating polls using Nette Framework.",
     "keywords": ["poll", "nette"],
     "license": "BSD-3",
