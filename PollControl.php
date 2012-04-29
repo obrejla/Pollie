@@ -56,7 +56,7 @@ abstract class PollControl extends Control {
     /**
      * Returns model layer of the poll.
      *
-     * @return IPollControlModel Model layer for the poll.
+     * @return PollControlModel Model layer for the poll.
      */
     public function getModel() {
         if ($this->model === NULL) {
@@ -69,7 +69,7 @@ abstract class PollControl extends Control {
     /**
      * Returns array of answers of the poll (user for check answer type).
      *
-     * @return PollControlAnswer Array of answers for the poll.
+     * @return PollControlAnswer[] Array of answers for the poll.
      */
     public function getAnswers() {
         $answers = $this->model->getAnswers();

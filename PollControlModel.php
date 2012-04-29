@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IPollControlModel - part of PollControl plugin for Nette Framework for voting.
+ * PollControlModel - part of PollControl plugin for Nette Framework for voting.
  *
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
@@ -26,7 +26,7 @@ interface PollControlModel {
     /**
      * Returns array of answers - array of PollControlAnswer.
      *
-     * @return Array ofPollControlAnswer Array of answers.
+     * @return PollControlAnswer[] Array of answers.
      */
     public function getAnswers();
 
