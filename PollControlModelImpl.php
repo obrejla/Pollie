@@ -9,8 +9,6 @@ use Nette\Environment;
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
- * @package    Nette\Extras
- * @version    0.1
  */
 class PollControlModelImpl extends Object implements PollControlModel {
 
@@ -79,7 +77,7 @@ class PollControlModelImpl extends Object implements PollControlModel {
     public function vote($id) {
         if ($this->isVotable()) {
             $this->connection->query('UPDATE poll_control_answers SET votes = votes + 1 WHERE id = %i', $id, ' AND questionId = %i', $this->id);
-            
+
             $this->denyVotingForUser();
         } else {
             throw new BadRequestException('You can vote only once per hour.');

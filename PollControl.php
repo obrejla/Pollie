@@ -9,13 +9,11 @@ use Nette\Application\UI\Control;
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
- * @package    Nette\Extras
- * @version    0.1
  */
 abstract class PollControl extends Control {
 
     /**
-     * Identification string of csrf token for GET and POST methods and session namespace. 
+     * Identification string of csrf token for GET and POST methods and session namespace.
      *
      * @var string Identification string of csrf token.
      */
@@ -90,18 +88,18 @@ abstract class PollControl extends Control {
      */
     public function link($destination, $args = array()) {
         $args[self::CSRF_IDENTIFIER] = $this->generateCsrfLinkToken();
-        
+
         return parent::link($destination, $args);
     }
 
     /**
-     * @see PresenterComponent::signalReceived($signal) 
+     * @see PresenterComponent::signalReceived($signal)
      */
     public function signalReceived($signal) {
         if (!$this->checkCsrfLinkToken()) {
             $sess = Environment::getSession(self::CSRF_IDENTIFIER);
             unset($sess->csrfLinkToken);
-            
+
             throw new BadSignalException('CSRF token expired, try again.');
         }
 

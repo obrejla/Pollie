@@ -7,8 +7,6 @@
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
- * @package    Nette\Extras
- * @version    0.1.1
  */
 class LinkPollControl extends PollControl {
 

@@ -8,8 +8,6 @@ use Nette\Object;
  * @copyright  Copyright (c) 2009 Ondřej Brejla
  * @license    New BSD License
  * @link       http://github.com/OndrejBrejla/Nette-PollControl
- * @package    Nette\Extras
- * @version    0.1
  */
 class PollControlAnswer extends Object {
 
@@ -28,7 +26,7 @@ class PollControlAnswer extends Object {
     private $text;
 
     /**
-     * Votes count of the answer. 
+     * Votes count of the answer.
      *
      * @var int Votes count of the answer.
      */
