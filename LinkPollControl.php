@@ -13,10 +13,10 @@ class LinkPollControl extends PollControl {
     public function handleVote($id) {
         try {
             $this->model->vote($id);
-            $this->flashMessage('Váš hlas byl uložen.');
+            $this->flashMessage('Your vote has been saved.');
         } catch (BadRequestException $ex) {
             // something to do, when user is not allowed to vote (ex. flash message, ...)
-            $this->flashMessage('Již jste hlasoval(a).');
+            $this->flashMessage('You have already voted.');
         }
 
         $this->invalidateControl();

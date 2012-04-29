@@ -14,16 +14,16 @@ class FormPollControl extends PollControl {
 
     public function createComponentPollControlForm() {
         $form = new Form();
-        $form->addProtection('Kontrolní klíč nesouhlasí. Opakujte hlasování.');
+        $form->addProtection('Control key is not correct. Do another vote.');
 
         $answers = array();
         foreach ($this->getAnswers() as $answer) {
             $answers[$answer->id] = $answer->getText();
         }
         $form->addRadioList('pollVoteRadiolist', '', $answers)
-                ->addRule(Form::FILLED, 'Před odesláním vyberte odpověď.');
+                ->addRule(Form::FILLED, 'Select an answer.');
 
-        $form->addSubmit('pollVoteSubmit', 'Hlasovat');
+        $form->addSubmit('pollVoteSubmit', 'Vote');
 
         $form->onSuccess[] = array($this, 'onSuccessVote');
 
@@ -33,10 +33,10 @@ class FormPollControl extends PollControl {
     public function onSuccessVote(Form $form) {
         try {
             $this->model->vote($form->values['pollVoteRadiolist']);
-            $this->flashMessage('Váš hlas byl uložen.');
+            $this->flashMessage('Your vote has been saved.');
         } catch (BadRequestException $ex) {
             // something to do, when user is not allowed to vote (ex. flash message, ...)
-            $this->flashMessage('Již jste hlasoval(a).');
+            $this->flashMessage('You have already voted.');
         }
 
         $this->invalidateControl();
