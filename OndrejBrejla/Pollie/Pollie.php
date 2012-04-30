@@ -41,7 +41,8 @@ abstract class Pollie extends Control {
             case 'form':
                 return new PollieForm();
 
-            default: throw new \InvalidArgumentException('Bad factory argument - ' . $poll);
+            default:
+                throw new \InvalidArgumentException('Bad factory argument - ' . $poll);
         }
     }
 
