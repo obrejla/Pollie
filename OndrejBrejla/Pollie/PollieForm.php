@@ -3,6 +3,7 @@
 namespace OndrejBrejla\Pollie;
 
 use Nette\Application\UI\Form;
+use Nette\Application\BadRequestException;
 
 /**
  * PollieForm - part of Pollie plugin for Nette Framework for voting.
