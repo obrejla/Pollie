@@ -2,6 +2,8 @@
 
 namespace OndrejBrejla\Pollie;
 
+use Nette\Application\BadRequestException;
+
 /**
  * PollieLink - part of Pollie plugin for Nette Framework for voting.
  * Uses links for realization of the vote.
