@@ -16,7 +16,7 @@ CREATE TABLE `pollie_answers` (
 INSERT INTO `pollie_answers` (`id`, `questionId`, `answer`, `votes`) VALUES
 (1,	1,	'Surely yes!',	43),
 (2,	1,	'Hard to say.',	11),
-(3,	1,	'Sorely not!',	19);
+(3,	1,	'Surely not!',	19);
 
 DROP TABLE IF EXISTS `pollie_questions`;
 CREATE TABLE `pollie_questions` (
